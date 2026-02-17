@@ -77,6 +77,24 @@
     );
   }
 
+  async function focusPromptTextbox() {
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      const promptTextbox = selectors.getPromptTextboxElement();
+      if (promptTextbox) {
+        promptTextbox.click();
+        promptTextbox.focus({ preventScroll: true });
+
+        if (promptTextbox.matches(":focus") || document.activeElement === promptTextbox) {
+          return true;
+        }
+      }
+
+      await sleep(120);
+    }
+
+    return false;
+  }
+
   async function trySelectProOnce() {
     const modeButton = selectors.getModePickerButton();
     if (!modeButton) {
@@ -133,6 +151,13 @@
 
         const result = await trySelectProOnce();
         if (result.ok) {
+          if (result.reason === "selected-pro") {
+            const focused = await focusPromptTextbox();
+            if (!focused) {
+              log("warn", "Switched to Pro but prompt textbox was not focused", { reason });
+            }
+          }
+
           removeWarning();
           log("info", "Pro mode ensured", { reason, attempt: retry + 1, outcome: result.reason });
           return true;

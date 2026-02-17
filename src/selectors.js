@@ -19,6 +19,12 @@
     '[role="menuitemradio"][data-test-id*="fast"]'
   ];
 
+  const PROMPT_TEXTBOX_SELECTORS = [
+    'div.ql-editor[role="textbox"][aria-label="Enter a prompt for Gemini"]',
+    'div[contenteditable="true"][role="textbox"][aria-label*="prompt for Gemini" i]',
+    'rich-textarea .ql-editor[role="textbox"]'
+  ];
+
   function normalizeText(value) {
     return String(value || "").replace(/\s+/g, " ").trim();
   }
@@ -135,6 +141,10 @@
     return getMenuOption(FAST_OPTION_SELECTORS, /\bfast\b/i);
   }
 
+  function getPromptTextboxElement() {
+    return getFirstVisible(PROMPT_TEXTBOX_SELECTORS);
+  }
+
   function isModeMenuOpen(button) {
     const modeButton = button || getModePickerButton();
     if (!modeButton) {
@@ -151,6 +161,7 @@
     getModeMenuRoot,
     getProOptionElement,
     getFastOptionElement,
+    getPromptTextboxElement,
     isModeMenuOpen,
     isFastModeActive,
     isThinkingModeActive,
