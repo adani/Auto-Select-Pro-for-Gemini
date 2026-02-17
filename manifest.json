@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Gemini Pro Selector",
+  "name": "Auto-Select Pro for Gemini",
   "description": "Keeps Gemini mode set to Pro on https://gemini.google.com/app.",
   "version": "0.1.0",
   "permissions": ["storage", "tabs"],
@@ -16,7 +16,7 @@
     }
   ],
   "action": {
-    "default_title": "Gemini Pro Selector",
+    "default_title": "Auto-Select Pro for Gemini",
     "default_popup": "src/popup.html"
   }
 }

@@ -11,13 +11,13 @@ async function ensureDefaultSettings() {
 
 chrome.runtime.onInstalled.addListener(() => {
   ensureDefaultSettings().catch((error) => {
-    console.error("Gemini Pro Selector: failed to set defaults on install", error);
+    console.error("Auto-Select Pro for Gemini: failed to set defaults on install", error);
   });
 });
 
 chrome.runtime.onStartup.addListener(() => {
   ensureDefaultSettings().catch((error) => {
-    console.error("Gemini Pro Selector: failed to set defaults on startup", error);
+    console.error("Auto-Select Pro for Gemini: failed to set defaults on startup", error);
   });
 });
 

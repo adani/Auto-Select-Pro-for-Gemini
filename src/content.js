@@ -141,7 +141,7 @@
         lastFailure = result.reason;
       }
 
-      showWarning("Gemini Pro Selector: Pro mode is unavailable right now. Retried 3 times.");
+      showWarning("Auto-Select Pro for Gemini: Pro mode is unavailable right now. Retried 3 times.");
       log("warn", "Failed to enforce Pro mode", { reason, lastFailure });
       return false;
     })();
