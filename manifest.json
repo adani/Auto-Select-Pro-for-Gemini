@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini Pro Selector",
+  "description": "Keeps Gemini mode set to Pro on https://gemini.google.com/app.",
+  "version": "0.1.0",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://gemini.google.com/app"],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://gemini.google.com/app"],
+      "js": ["src/selectors.js", "src/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Gemini Pro Selector",
+    "default_popup": "src/popup.html"
+  }
+}

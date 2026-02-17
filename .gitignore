@@ -1,0 +1,6 @@
+.DS_Store
+*.crx
+*.pem
+keys/*.pem
+dist/
+*.log
